@@ -1,13 +1,13 @@
 from pymongo import MongoClient
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
-MONGO_URL = "mongodb+srv://shabbuparveen377_db_user:Shabbu123@aimlcluster.oi7jdsq.mongodb.net/?appName=AIMLCluster"
+MONGO_URI = os.getenv("MONGO_URI")
 
+client = MongoClient(MONGO_URI)
 
-client = MongoClient(MONGO_URL)
+db = client["smart_retail_ai"]
 
-
-db = client["retail_ai_db"]
-
-
-prediction_collection = db["sales_predictions"]
+prediction_collection = db["predictions"]

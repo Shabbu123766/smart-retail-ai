@@ -9,7 +9,11 @@ from pydantic import BaseModel
 import subprocess
 from agents.sales_anomaly_agent import detect_sales_anomalies
 
-app = FastAPI()
+app = FastAPI(
+    title="Smart Retail Assistant API",
+    description="Multi-Agent AI Platform for Retail Forecasting, Analytics, and Anomaly Detection",
+    version="1.0.0"
+)
 
 class QueryRequest(BaseModel):
     question: str

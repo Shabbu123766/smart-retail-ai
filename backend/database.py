@@ -10,8 +10,11 @@ MONGO_URI = os.getenv("MONGO_URI")
 client = MongoClient(
     MONGO_URI,
     tls=True,
-    tlsCAFile=certifi.where()
+    tlsCAFile=certifi.where(),
+    serverSelectionTimeoutMS=30000
 )
+
+client.admin.command('ping')
 
 db = client["smart_retail_ai"]
 
